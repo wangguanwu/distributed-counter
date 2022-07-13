@@ -12,7 +12,6 @@ import org.gw.raft.rpc.IncrementAndGetRequest;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
-import java.util.concurrent.TimeoutException;
 
 public class CounterClient {
     public static void main(String[] args) throws Exception {
