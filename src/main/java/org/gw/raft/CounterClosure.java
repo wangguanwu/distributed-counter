@@ -34,7 +34,10 @@ public abstract class CounterClosure  implements Closure {
     }
 
     protected void success(final long value) {
-        final ValueResponse response = ValueResponse.newBuilder().setValue(value).setSuccess(true).build();
+        final ValueResponse response = ValueResponse
+                .newBuilder()
+                .setValue(value)
+                .setSuccess(true).build();
         setValueResponse(response);
     }
 }

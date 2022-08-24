@@ -38,11 +38,11 @@ public class CounterClient {
         final PeerId leader = RouteTable.getInstance().selectLeader(groupId);
 
         System.out.println("Leader is " + leader);
-        final int n = 1000;
+        final int n = 1;
         final CountDownLatch latch = new CountDownLatch(n);
         final long start = System.currentTimeMillis();
         for (int i = 0; i < n; i++) {
-            incrementAndGet(cliClientService, leader, i, latch);
+            incrementAndGet(cliClientService, leader, i+1, latch);
         }
         latch.await();
         System.out.println("n + ops, cost: " + (System.currentTimeMillis() - start) + "ms");
@@ -58,8 +58,8 @@ public class CounterClient {
             @Override
             public void complete(Object result, Throwable throwable) {
                 if(throwable == null) {
-                    latch.countDown();
                     System.out.println("incrementAndGet result: " + result);
+                    latch.countDown();
                 } else {
                     throwable.printStackTrace();
                     latch.countDown();
